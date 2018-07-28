@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.receita.domain.Usuario;
 import br.com.receita.repository.UsuarioRepository;
+import br.com.receita.service.exception.ObjectNotFoundException;
 
 @Service
 public class UsuarioService {
@@ -25,7 +26,9 @@ public class UsuarioService {
 	
 	public Usuario pesquisar(String id) {
 		Usuario usuario = usuarioRepository.findOne(id);
-		
+		if (usuario == null) {
+			throw new ObjectNotFoundException("Usuário não encontrado");
+		}
 		return usuario;
 	}
 }

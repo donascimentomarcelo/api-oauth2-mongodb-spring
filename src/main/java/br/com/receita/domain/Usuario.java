@@ -1,6 +1,7 @@
 package br.com.receita.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -19,23 +20,28 @@ public class Usuario implements Serializable{
 	private int idade;
 	private String email;
 	@DBRef
-	private List<Perfil> perfis;
+	private List<Perfil> perfis =  new ArrayList<>();
 	private String senha;
 	
 	public Usuario() {
 		
 	}
 	
-	
-
 	public Usuario(Usuario usuario) {
 		this.nome = usuario.getNome();
 		this.email = usuario.getEmail();
 		this.senha = usuario.getSenha();
 		this.perfis = usuario.getPerfis();
 	}
-
-
+	
+	public Usuario(String id, String nome, int idade, String email, String senha) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.idade = idade;
+		this.email = email;
+		this.senha = senha;
+	}
 
 	public String getId() {
 		return id;

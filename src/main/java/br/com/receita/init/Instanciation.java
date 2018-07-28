@@ -1,6 +1,8 @@
 package br.com.receita.init;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -25,20 +27,20 @@ public class Instanciation implements CommandLineRunner{
 		usuarioRepository.deleteAll();
 		perfilRepository.deleteAll();
 
-		Perfil p1 = new Perfil(null, "ADMIN");
-		Perfil p2 = new Perfil(null, "USER");
+		Perfil p1 = new Perfil(null, "ROLE_ADMIN");
+		Perfil p2 = new Perfil(null, "ROLE_USER");
 		
-		Usuario u1 = new Usuario(null, "Crane", 28, "crane@gmail.com", "123");
-		Usuario u2 = new Usuario(null, "Jade Aldemir", 31, "jade@gmail.com", "123");
+		List<Perfil> perfilAdmin = new ArrayList<>();
+		perfilAdmin.add(p1);
 		
-		usuarioRepository.save(Arrays.asList(u1, u2));
+		List<Perfil> perfilUser = new ArrayList<>();
+		perfilUser.add(p2);
+		
+		Usuario u1 = new Usuario(null, "Crane", 31, "crane@gmail.com", perfilAdmin, "123");
+		Usuario u2 = new Usuario(null, "Jade Aldemir", 28, "jade@gmail.com",perfilUser, "123");
+		
 		perfilRepository.save(Arrays.asList(p1, p2));
-		
-		u1.getPerfis().add(p1); 
-		u2.getPerfis().add(p1);
-		
-		usuarioRepository.save(u1);
-		usuarioRepository.save(u2);
+		usuarioRepository.save(Arrays.asList(u1, u2));
 		
 	}
 	

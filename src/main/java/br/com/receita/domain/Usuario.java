@@ -34,12 +34,13 @@ public class Usuario implements Serializable{
 		this.perfis = usuario.getPerfis();
 	}
 	
-	public Usuario(String id, String nome, int idade, String email, String senha) {
+	public Usuario(String id, String nome, int idade, String email, List<Perfil> perfis, String senha) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.idade = idade;
 		this.email = email;
+		this.perfis = perfis;
 		this.senha = senha;
 	}
 

@@ -1,8 +1,10 @@
 package br.com.receita.domain;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -16,6 +18,8 @@ public class Usuario implements Serializable{
 	private String nome;
 	private int idade;
 	private String email;
+	@DBRef
+	private List<Perfil> perfis;
 	
 	public Usuario() {
 		
@@ -54,6 +58,15 @@ public class Usuario implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public List<Perfil> getPerfis() {
+		return perfis;
+	}
+
+	public void setPerfis(List<Perfil> perfis) {
+		this.perfis = perfis;
+	}
+	
 	
 	
 	

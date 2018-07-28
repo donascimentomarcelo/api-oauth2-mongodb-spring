@@ -22,11 +22,11 @@ public class ReceitaApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... arg0) throws Exception {
-		
+		/*
 		Perfil p1 = new Perfil(null, "administrados");
 		Perfil p2 = new Perfil(null, "usuario");
 		
-		//perfilRepository.save(Arrays.asList(p1, p2));
+		perfilRepository.save(Arrays.asList(p1, p2));*/
 		
 	}
 }

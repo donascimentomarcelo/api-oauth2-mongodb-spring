@@ -22,4 +22,10 @@ public class UsuarioService {
 	public List<Usuario> listar() {
 		return usuarioRepository.findAll();
 	}
+	
+	public Usuario pesquisar(String id) {
+		Usuario usuario = usuarioRepository.findOne(id);
+		
+		return usuario;
+	}
 }

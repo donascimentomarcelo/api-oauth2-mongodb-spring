@@ -18,7 +18,7 @@ import br.com.receita.domain.Usuario;
 import br.com.receita.service.UsuarioService;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/api/usuarios")
 public class UsuarioResource {
 	
 	@Autowired

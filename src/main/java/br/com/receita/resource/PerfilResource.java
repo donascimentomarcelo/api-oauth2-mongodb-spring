@@ -12,7 +12,7 @@ import br.com.receita.domain.Perfil;
 import br.com.receita.service.PerfilService;
 
 @RestController
-@RequestMapping("perfil")
+@RequestMapping("/api/perfil")
 public class PerfilResource {
 	
 	@Autowired

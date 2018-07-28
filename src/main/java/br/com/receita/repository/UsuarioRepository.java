@@ -6,4 +6,6 @@ import br.com.receita.domain.Usuario;
 
 public interface UsuarioRepository extends MongoRepository<Usuario, String>{
 
+	Usuario findByEmail(String username);
+
 }

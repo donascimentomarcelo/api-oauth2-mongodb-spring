@@ -20,12 +20,22 @@ public class Usuario implements Serializable{
 	private String email;
 	@DBRef
 	private List<Perfil> perfis;
+	private String senha;
 	
 	public Usuario() {
 		
 	}
 	
 	
+
+	public Usuario(Usuario usuario) {
+		this.nome = usuario.getNome();
+		this.email = usuario.getEmail();
+		this.senha = usuario.getSenha();
+		this.perfis = usuario.getPerfis();
+	}
+
+
 
 	public String getId() {
 		return id;
@@ -65,6 +75,14 @@ public class Usuario implements Serializable{
 
 	public void setPerfis(List<Perfil> perfis) {
 		this.perfis = perfis;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
 	

@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
+import br.com.receita.domain.Ingrediente;
 import br.com.receita.domain.Perfil;
 import br.com.receita.domain.Usuario;
+import br.com.receita.repository.IngredienteRepository;
 import br.com.receita.repository.PerfilRepository;
 import br.com.receita.repository.UsuarioRepository;
 
@@ -20,12 +22,15 @@ public class Instanciation implements CommandLineRunner{
 	private UsuarioRepository usuarioRepository;
 	@Autowired
 	private PerfilRepository perfilRepository;
+	@Autowired
+	private IngredienteRepository ingredienteRepository;
 	
 	@Override
 	public void run(String... arg0) throws Exception {
 		
 		usuarioRepository.deleteAll();
 		perfilRepository.deleteAll();
+		ingredienteRepository.deleteAll();
 
 		Perfil p1 = new Perfil(null, "ROLE_ADMIN");
 		Perfil p2 = new Perfil(null, "ROLE_USER");
@@ -35,6 +40,11 @@ public class Instanciation implements CommandLineRunner{
 		
 		List<Perfil> perfilUser = new ArrayList<>();
 		perfilUser.add(p2);
+		
+		for(Integer i = 0; i < 5; i++) {
+			Ingrediente ingrediente =  new Ingrediente(null, "Ingrediente"+i, 5.7 + i * 9 , "marca"+i);
+			ingredienteRepository.save(ingrediente);
+		}
 		
 		Usuario u1 = new Usuario(null, "Crane", 31, "crane@gmail.com", perfilAdmin, "123");
 		Usuario u2 = new Usuario(null, "Jade Aldemir", 28, "jade@gmail.com",perfilUser, "123");
